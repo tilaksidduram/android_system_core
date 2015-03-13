@@ -66,7 +66,8 @@ LOCAL_STATIC_LIBRARIES := \
 	libmincrypt \
 	libext4_utils_static \
 	libext2_blkid \
-	libext2_uuid_static
+	libext2_uuid_static \
+	libz
 
 LOCAL_ADDITIONAL_DEPENDENCIES += $(LOCAL_PATH)/Android.mk
 ifneq ($(strip $(TARGET_PLATFORM_DEVICE_BASE)),)
@@ -78,6 +79,8 @@ endif
 ifneq ($(strip $(TARGET_PROP_PATH_FACTORY)),)
 LOCAL_CFLAGS += -DOVERRIDE_PROP_PATH_FACTORY=\"$(TARGET_PROP_PATH_FACTORY)\"
 endif
+
+LOCAL_C_INCLUDES += external/zlib
 
 include $(BUILD_EXECUTABLE)
 
